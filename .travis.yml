@@ -1,0 +1,21 @@
+sudo: required
+language: go
+
+go:
+- 1.11.x
+
+services:
+  - docker
+env:
+  global:
+    - IMAGE: brudnyhenry/super-saiyan-app
+    - TAG: $TRAVIS_BRANCH
+
+jobs:
+  include:
+  - stage: test
+    name: Run tests
+    script: go test -v
+  - stage: deployment
+    name: Build and deploy image to Docker Hub
+    script: docker build --pull --cache-from "$IMAGE" --tag $IMAGE:$TAG . && docker login -u "$REGISTRY_USER" -p "$REGISTRY_PASS" && docker push $IMAGE:$TAG
