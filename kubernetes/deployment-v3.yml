@@ -1,0 +1,18 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: super-saiyan-app-3.0
+spec:
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        name: super-saiyan-app-v3
+        version: "3.0"
+    spec:
+      containers: 
+        - name: super-saiyan-app-v3
+          image: brudnyhenry/super-saiyan-app:v3
+          ports:
+            - name: http
+              containerPort: 8080
