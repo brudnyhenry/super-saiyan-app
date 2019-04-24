@@ -1,20 +1,20 @@
-
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="Demo app for Knowledge Sharing Session" content="">
-    <meta name="Adam Placzek" content="">
 
-    <title>Knowledge Sharing Demo</title>
-    <link href="static/stylesheets/bootstrap.min.css" rel="stylesheet">
-    <link href="static/stylesheets/cover.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
-  </head>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="Demo app for Knowledge Sharing Session" content="">
+  <meta name="Adam Placzek" content="">
 
-  <body>
- <div class="container">    
+  <title>Knowledge Sharing Demo</title>
+  <link href="static/stylesheets/bootstrap.min.css" rel="stylesheet">
+  <link href="static/stylesheets/cover.css" rel="stylesheet">
+  <link rel="stylesheet" href="static/stylesheets/fa.css">
+</head>
+
+<body>
+  <div class="container">
     <div class="site-wrapper">
 
       <div class="site-wrapper-inner">
@@ -22,41 +22,38 @@
         <div class="cover-container">
 
           <div class="inner cover">
-                    <p class="lead">Boot time {{.Time}} </p>
-                    <p class="lead">I'm a running on {{.Hostname}}</p>
-            <form  class="form-inline" action="/" method="post">
-                              <div class="form-group">
-                                    <label for="">Github stars Dragonball mapper</label>
-                                    <input type="text" class="form-control" placeholder="project" name="project">
-                                </div>
-                                  <button type="submit" class="btn btn-primary">DragonBall it!</button>
+            <p class="lead">Boot time {{.Time}} </p>
+            <p class="lead">I'm a running on {{.Hostname}}</p>
+            <form class="form-inline" action="/" method="post">
+              <div class="form-group">
+                <label for="">Github stars Dragonball mapper</label>
+                <input type="text" class="form-control" placeholder="project" name="project">
+              </div>
+              <button type="submit" class="btn btn-primary">DragonBall it!</button>
             </form>
-          {{if .Rating}}
-<div class="card bg-dark text-white">
-  <div class="card-body">
-    <h5 class="card-title">{{.Repo}} rating is {{.Rating}}</h5>
-  <img class="img-responsive card-img-top" src="static/images/{{.Rating}}.jpeg" alt={{.Rating}}>
-  </div>
-  </div>
-</div>
-
-                    {{else}}
-          <i class="fas fa-dragon fa-border fa-10x"></i>
-                    {{end}}
-
+            {{if .Rating}}
+              <div class="card-body">
+                <p class="card-text">{{.Repo}} is </p>
+                <h1 class="text-danger display-2 font-weight-bold ">{{.Rating}}</h1>
+                <img class="card-img-top img-responsive" src="static/images/{{.Rating}}.jpeg" alt={{.Rating}}>
+              </div>
           </div>
-
-          <div class="mastfoot">
-            <div class="inner">
-              <p>Knowledge Sharing Session April 2019</p>
-            </div>
-          </div>
-
         </div>
+        {{end}}
 
+        <div class="mastfoot">
+          <div class="inner">
+            <p>Knowledge Sharing Session April 2019</p>
+          </div>
+        </div>
       </div>
 
     </div>
-    </div>
-  </body>
+
+  </div>
+
+  </div>
+  </div>
+</body>
+
 </html>

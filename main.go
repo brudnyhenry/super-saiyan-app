@@ -1,6 +1,7 @@
 package main
 
 import (
+	"crypto/tls"
 	"encoding/json"
 	"fmt"
 	"html/template"
@@ -45,7 +46,7 @@ func RootHandler(w http.ResponseWriter, r *http.Request) {
 	}
 	project, ok := r.Form["project"]
 	if ok {
-		p := strings.TrimLeft(project[0], "https://github.com/")
+		p := strings.TrimPrefix(project[0], "https://github.com/")
 		rating := generateRating(getStars(p))
 		d.Rating = rating
 		d.Repo = p
@@ -60,7 +61,7 @@ func RootHandler(w http.ResponseWriter, r *http.Request) {
 func generateRating(r int) string {
 	if r < 10 {
 		return "weak"
-	} else if r >= 10 && r < 100 {
+	} else if r >= 100 && r < 5000 {
 		return "strong"
 	} else {
 		return "legendary"
@@ -69,8 +70,11 @@ func generateRating(r int) string {
 
 func getStars(p string) int {
 	var result map[string]interface{}
+	transCfg := &http.Transport{
+		TLSClientConfig: &tls.Config{InsecureSkipVerify: true}, // ignore expired SSL certificates
+	}
+	client := &http.Client{Transport: transCfg}
 
-	var client http.Client
 	resp, err := client.Get(fmt.Sprintf("%s%s", gitURL, p))
 	if err != nil {
 		log.Fatalln(err)
