@@ -61,7 +61,7 @@ func RootHandler(w http.ResponseWriter, r *http.Request) {
 func generateRating(r int) string {
 	if r < 10 {
 		return "weak"
-	} else if r >= 100 && r < 5000 {
+	} else if r >= 10 && r < 5000 {
 		return "strong"
 	} else {
 		return "legendary"
