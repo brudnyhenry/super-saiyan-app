@@ -2,10 +2,11 @@
 
 # Github Stars Dragon Ball mapper
 
-Demo application for Knowledge Sharing Session. It maps github stars rating into Dragon Ball Character.
+Demo application for Knowledge Sharing Session. It maps number of github stars to Dragon Ball Character! Magic!
 
 Depending on application version characters level also change.
 
+Server will listen on port 8080
 
 ## Getting Started
 
